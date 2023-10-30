@@ -1,15 +1,17 @@
 const Contact = require("../models/contactModel");
 
+const getHome = async (req, res) => {
+  res.send("Hello");
+};
+
 const createContact = async (req, res) => {
   try {
     const { name, email, phone } = req.body;
 
     if (!name && !email && !phone) {
-      return res
-        .status(400)
-        .json({
-          error: "At least one of name, email, or phone must have a value.",
-        });
+      return res.status(400).json({
+        error: "At least one of name, email, or phone must have a value.",
+      });
     }
 
     const newContact = req.body;
@@ -42,9 +44,11 @@ const updateContact = async (req, res) => {
     const { name, email, phone } = req.body;
 
     if (!name && !email && !phone) {
-      return res.status(400).json({ error: "At least one of name, email, or phone must have a value." });
+      return res.status(400).json({
+        error: "At least one of name, email, or phone must have a value.",
+      });
     }
-    
+
     const { contactId } = req.params;
     const updatedContact = await Contact.findByIdAndUpdate(
       contactId,
@@ -103,4 +107,5 @@ module.exports = {
   getContact,
   updateContact,
   deleteContact,
+  getHome,
 };
