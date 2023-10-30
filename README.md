@@ -56,3 +56,5 @@ Once the application is up and running, you can perform the following tasks:
 <img src="https://github.com/ceacaiosifclaudiu/MERN-PhoneBook/assets/110819428/4aa7e391-c678-49d3-ac89-39ffe8faef52" alt="detail" width="500"/>
 <img src="https://github.com/ceacaiosifclaudiu/MERN-PhoneBook/assets/110819428/a561dc4f-5f2f-40a4-92d2-0fce8ba3f1e5" alt="edit" width="500"/>
 
+## Live demo
+https://phone-book-ceacaclaudiu.vercel.app/
