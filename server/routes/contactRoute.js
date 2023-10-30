@@ -5,10 +5,12 @@ const {
   getContacts,
   deleteContact,
   createContact,
+  getHome,
 } = require("../controllers/contactController");
 
 const router = express.Router();
 
+router.route("/").get(getHome);
 router.route("/contacts").get(getContacts);
 router.route("/contact").post(createContact);
 router
