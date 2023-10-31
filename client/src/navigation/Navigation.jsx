@@ -3,7 +3,6 @@ import { AddContact, Contacts, EditContact } from "../pages";
 import ContactDetail from "../pages/ContactDetail";
 import Layout from "./Layout";
 import { fetchContact, fetchContacts } from "./actions/fetchContacts";
-import { contactCreateLoader, contactEditLoader } from "./loaders/contact";
 
 const router = createBrowserRouter([
   {
@@ -24,14 +23,12 @@ const router = createBrowserRouter([
           { index: true, element: <ContactDetail /> },
           {
             path: "edit",
-            action: contactEditLoader,
             element: <EditContact />,
           },
         ],
       },
       {
         path: "/add",
-        action: contactCreateLoader,
         element: <AddContact />,
       },
     ],

@@ -1,60 +1,22 @@
 import React from "react";
-import { Form, Link, useRouteLoaderData } from "react-router-dom";
-import TextInput from "../components/TextInput";
+import { useRouteLoaderData } from "react-router-dom";
+import ContactForm from "../components/ContactForm";
 
 const EditContact = () => {
   const contact = useRouteLoaderData("edit");
-
-  const [newContact, setNewContact] = React.useState({
-    name: contact?.name || "",
-    phone: contact?.phone || "",
-    email: contact?.email || "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setNewContact({
-      ...newContact,
-      [name]: value,
-    });
-  };
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   return (
     <div className="contacts-container__right">
       <header>
         <h1>Edit your contact</h1>
       </header>
-      <Form method="PATCH">
-        <div className="two-columns">
-          <TextInput
-            name="name"
-            value={newContact.name}
-            placeholder="Name"
-            onChange={handleChange}
-          />
-          <TextInput
-            name="email"
-            value={newContact.email}
-            placeholder="Email"
-            onChange={handleChange}
-          />
-        </div>
-        <TextInput
-          name="phone"
-          value={newContact.phone}
-          placeholder="Phone"
-          onChange={handleChange}
-        />
-        <div className="buttons">
-          <button type="submit" className="button edit">
-            Update
-          </button>
-          <Link to={`/${contact._id}`} className="button cancel">
-            Cancel
-          </Link>
-        </div>
-      </Form>
+
+      <ContactForm
+        initialData={contact}
+        submitUrl={`${BASE_URL}/contact/${contact._id}`}
+        successCallback={() => {}}
+      />
     </div>
   );
 };

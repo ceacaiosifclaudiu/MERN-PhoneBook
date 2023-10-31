@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000"; //I let the url here for testing purpose
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const fetchContacts = async () => {
   try {
@@ -32,30 +32,29 @@ export const fetchContact = async ({ params }) => {
 export const fetchData = async (url, method, payload) => {
   const requestOptions = {
     method: method ? method : "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: payload ? JSON.stringify(payload) : null,
   };
 
-  const response = await fetch(url, requestOptions);
-  const data = await response.json();
-
-  const myData = data;
-
-  return myData;
+  await fetch(url, requestOptions);
 };
 
 export const deleteAccount = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}/contact/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${BASE_URL}/contact/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
-    console.log(response.json());
+    if (response.ok) {
+      console.log("Contact deleted successfully");
+      window.location.reload();
+    } else {
+      console.error("Failed to delete contact. Status:", response.status);
+      const errorText = await response.text();
+      console.error("Error response text:", errorText);
+    }
   } catch (error) {
     console.error("Error fetching contact:", error);
     throw error;
