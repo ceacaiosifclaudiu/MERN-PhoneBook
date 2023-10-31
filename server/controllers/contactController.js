@@ -1,7 +1,7 @@
 const Contact = require("../models/contactModel");
 
 const getHome = async (req, res) => {
-  res.send("Hello");
+  res.send("Welcome to my Contacts api!");
 };
 
 const createContact = async (req, res) => {

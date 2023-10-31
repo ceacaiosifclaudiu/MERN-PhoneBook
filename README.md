@@ -50,3 +50,11 @@ Once the application is up and running, you can perform the following tasks:
 + Edit Contacts: To edit an existing contact, click the "Edit" button next to the contact's details.
 
 + Delete Contacts: To delete a contact, click the "Delete" button next to the contact's details.
+
+<img src="https://github.com/ceacaiosifclaudiu/MERN-PhoneBook/assets/110819428/8901e29a-4420-431d-bca6-33bbedabbc2c" alt="home" width="500"/>
+<img src="https://github.com/ceacaiosifclaudiu/MERN-PhoneBook/assets/110819428/574408fb-8837-4730-a1cb-15c97fda2437" alt="create" width="500"/>
+<img src="https://github.com/ceacaiosifclaudiu/MERN-PhoneBook/assets/110819428/4aa7e391-c678-49d3-ac89-39ffe8faef52" alt="detail" width="500"/>
+<img src="https://github.com/ceacaiosifclaudiu/MERN-PhoneBook/assets/110819428/a561dc4f-5f2f-40a4-92d2-0fce8ba3f1e5" alt="edit" width="500"/>
+
+## Live demo
+https://phone-book-ceacaclaudiu.vercel.app/
