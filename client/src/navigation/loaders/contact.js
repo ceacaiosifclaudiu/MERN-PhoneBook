@@ -17,6 +17,5 @@ export const contactCreateLoader = async ({ request }) => {
   const createContact = Object.fromEntries(formData);
   console.log(createContact);
   fetchData(`${BASE_URL}/contact`, "POST", createContact);
-  window.location.reload();
-  return redirect(`/`);
+  return redirect("/");
 };

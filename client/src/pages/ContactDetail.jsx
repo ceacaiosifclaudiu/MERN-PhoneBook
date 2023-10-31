@@ -23,7 +23,6 @@ const ContactDetail = () => {
         </Link>
         <Link
           to={`/`}
-          reloadDocument
           className="button delete"
           onClick={() => {
             deleteAccount(contact._id);
