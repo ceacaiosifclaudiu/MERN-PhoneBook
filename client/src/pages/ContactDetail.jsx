@@ -1,9 +1,9 @@
+// ContactDetail.js
 import React from "react";
 import { Link, useRouteLoaderData } from "react-router-dom";
-
-import { deleteAccount } from "../navigation/actions/fetchContacts";
-import { Email, Phone, User } from "../assets";
 import ContactItem from "../components/ContactItem";
+import { contactDetailsData } from "../data/contactDetailsData";
+import { deleteAccount } from "../navigation/actions/fetchContacts";
 
 const ContactDetail = () => {
   const contact = useRouteLoaderData("edit");
@@ -12,9 +12,14 @@ const ContactDetail = () => {
     <div className="contacts-container__right">
       <header></header>
       <div className="two-columns">
-        <ContactItem iconSrc={User} text={contact?.name} />
-        <ContactItem iconSrc={Email} text={contact?.email} />
-        <ContactItem iconSrc={Phone} text={contact?.phone} />
+        {contactDetailsData.map((item) => (
+          <ContactItem
+            key={item.key}
+            iconSrc={item.iconSrc}
+            text={contact?.[item.key]}
+            label={item.label}
+          />
+        ))}
       </div>
 
       <div className="buttons">

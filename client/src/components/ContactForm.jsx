@@ -1,53 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+import useContactForm from "../hooks/useContactForm";
 import TextInput from "./TextInput";
 
 const ContactForm = ({ initialData, submitUrl, successCallback }) => {
-  const [contactData, setContactData] = useState(initialData);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    setContactData(initialData);
-  }, [initialData]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setContactData({
-      ...contactData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch(submitUrl, {
-        method: initialData._id ? "PATCH" : "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(contactData),
-      });
-
-      if (response.ok) {
-        console.log("Contact operation successful");
-        setContactData(initialData);
-        navigate(".", { replace: true });
-        if (successCallback) {
-          successCallback();
-        }
-      } else {
-        const responseText = await response.text();
-        console.error(
-          "Failed to perform contact operation. Response text:",
-          responseText
-        );
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-    }
-  };
+  const { contactData, handleChange, handleSubmit } = useContactForm({
+    initialData,
+    submitUrl,
+    successCallback,
+  });
 
   return (
     <form onSubmit={handleSubmit}>
