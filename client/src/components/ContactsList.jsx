@@ -11,12 +11,13 @@ const ContactsList = () => {
       <div className="input-container">
         <div className="input-container__search">
           <input
+            id="input-search"
             type="text"
             placeholder={contacts.length <= 0 ? "No contacts" : "Search..."}
             onChange={(e) => setSearch(e.target.value)}
             disabled={contacts.length <= 0}
+            autoComplete="false"
           />
-
           <img src={Search} alt="Search" />
         </div>
 
@@ -26,26 +27,24 @@ const ContactsList = () => {
       </div>
       <div className="contacts-list">
         {contacts.length <= 0 ? (
-          <h1>No</h1>
+          <h1>No contacts</h1>
         ) : (
           contacts
             ?.filter(
-              (contacts) =>
-                contacts?.name.toLowerCase().includes(search) ||
-                contacts?.phone.includes(search)
+              (contact) =>
+                contact?.name.toLowerCase().includes(search) ||
+                contact?.phone.includes(search)
             )
-            ?.map((contact) => {
-              return (
-                <NavLink
-                  to={`/${contact._id}`}
-                  key={contact._id}
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                  <h4>{contact.name}</h4>
-                  <p>{contact.phone}</p>
-                </NavLink>
-              );
-            })
+            ?.map((contact) => (
+              <NavLink
+                to={`/${contact._id}`}
+                key={contact._id}
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                <h4>{contact.name}</h4>
+                <p>{contact.phone}</p>
+              </NavLink>
+            ))
         )}
       </div>
     </div>
