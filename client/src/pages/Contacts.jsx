@@ -4,7 +4,7 @@ import { contactListItemData } from "../data/ContactListItemData";
 
 const Contacts = () => {
   return (
-    <div className="contacts-containrer__right">
+    <div className="contacts-container__right">
       <div className="welcome-container">
         <h1>Welcome to Your Phone Book</h1>
         <p>
